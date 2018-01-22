@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/jquery-qrcode.min.js"></script>
+<script type="text/javascript">
+
+
+
+$(document).ready(function(){
+
+
+$("#text").keyup(
+	function(){
+		var qrStr = $("#text").val();
+
+		$("#output").empty();
+		$('#biteOut span').text(encodeURI(qrStr).replace(/%[0-9A-F]{2}/g, '*').length);
+		$("#output").qrcode({
+		"size": 400,
+		//"color": "#333",
+		 fill: '#456',
+		"text": qrStr
+		});
+
+		}
+	)
+
+})
+
+
+
+
+</script>
+
+<title>qr_var00</title>
+</head>
+
+<body>
+
+<textarea id="text"></textarea>
+<div id="output"></div>
+<div id="biteOut"><span>0</span>バイト</div>
+
+
+
+</body>
+</html>
